@@ -1,11 +1,13 @@
 package com.project.ems.service.impl;
 
 import com.project.ems.model.Employee;
+import com.project.ems.model.Role;
 import com.project.ems.model.exceptions.InvalidEmployeeIdException;
 import com.project.ems.repository.EmployeeRepository;
 import com.project.ems.service.EmployeeService;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
@@ -28,6 +30,15 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
+    @Transactional
+    public Employee insertEmployee(String name, String surname, String email, Role role, Integer weeklyHours,
+                                   Double hourlyRate, Double weeklySalary) {
+        Employee employee = new Employee(name, surname, email, role, weeklyHours, hourlyRate, weeklyHours * hourlyRate);
+
+        return this.employeeRepository.save(employee);
+    }
+
+    @Override
     public Employee insertEmployee(Employee employee) {
         Employee emp = new Employee(
                 employee.getName(),
@@ -41,8 +52,24 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
+    public Employee updateEmployee(Long id, String name, String surname, String email, Role role, Integer weeklyHours,
+                                   Double hourlyRate, Double weeklySalary) {
+        Employee employee = this.employeeRepository.findById(id).orElseThrow(InvalidEmployeeIdException::new);
+
+        employee.setName(name);
+        employee.setSurname(surname);
+        employee.setEmail(email);
+        employee.setRole(role);
+        employee.setWeeklyHours(weeklyHours);
+        employee.setHourlyRate(hourlyRate);
+        employee.setWeeklySalary(hourlyRate * weeklyHours);
+
+        return this.employeeRepository.save(employee);
+    }
+
+    @Override
     public Employee updateEmployee(Long id, Employee employee) {
-        Employee emp = this.employeeRepository.findById(id).orElseThrow(InvalidEmployeeIdException::new);
+        Employee emp = this.employeeRepository.findById(employee.getId()).orElseThrow(InvalidEmployeeIdException::new);
 
         emp.setName(employee.getName());
         emp.setSurname(employee.getSurname());
@@ -57,6 +84,6 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public void deleteEmployee(Long id) {
-
+        this.employeeRepository.deleteById(id);
     }
 }

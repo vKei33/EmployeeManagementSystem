@@ -1,6 +1,7 @@
 package com.project.ems.service;
 
 import com.project.ems.model.Employee;
+import com.project.ems.model.Role;
 
 import java.util.List;
 
@@ -12,7 +13,13 @@ public interface EmployeeService {
 
     Employee insertEmployee(Employee employee);
 
+    Employee insertEmployee(String name, String surname, String email, Role role, Integer weeklyHours,
+                            Double hourlyRate, Double weeklySalary);
+
     Employee updateEmployee(Long id, Employee employee);
+
+    Employee updateEmployee(Long id, String name, String surname, String email, Role role, Integer weeklyHours,
+                            Double hourlyRate, Double weeklySalary);
 
     void deleteEmployee(Long id);
 
