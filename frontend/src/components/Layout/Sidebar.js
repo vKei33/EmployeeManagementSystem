@@ -10,15 +10,9 @@ const Sidebar = () => {
       <div className="position-sticky pt-3">
         <ul className="nav flex-column">
           <li className="nav-item">
-            <a className="nav-link active" aria-current="page" href="#">
-              <i className="bi bi-house-door"></i>
-              &nbsp; <Link to={"/"}>Dashboard</Link>
-            </a>
-          </li>
-          <li className="nav-item">
             <a className="nav-link" href="#">
               <i className="bi bi-person-workspace"></i>
-              &nbsp; <Link to={"/employee/all"}>Employees</Link>
+              &nbsp; <Link to={"/"}>Employees</Link>
             </a>
           </li>
         </ul>
