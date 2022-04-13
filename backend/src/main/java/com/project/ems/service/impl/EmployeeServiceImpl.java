@@ -29,47 +29,47 @@ public class EmployeeServiceImpl implements EmployeeService {
         return this.employeeRepository.findAll();
     }
 
-    @Override
-    @Transactional
-    public Employee insertEmployee(String name, String surname, String email, Role role, Integer weeklyHours,
-                                   Double hourlyRate, Double weeklySalary) {
-        Employee employee = new Employee(name, surname, email, role, weeklyHours, hourlyRate, weeklyHours * hourlyRate);
-
-        return this.employeeRepository.save(employee);
-    }
+//    @Override
+//    @Transactional
+//    public Employee insertEmployee(String name, String surname, String email, Role role, Integer weeklyHours,
+//                                   Integer hourlyRate, Integer weeklySalary) {
+//        Employee employee = new Employee(name, surname, email, role, weeklyHours, hourlyRate, weeklyHours * hourlyRate);
+//
+//        return this.employeeRepository.save(employee);
+//    }
 
     @Override
     public Employee insertEmployee(Employee employee) {
-        Employee emp = new Employee(
-                employee.getName(),
-                employee.getSurname(),
-                employee.getEmail(),
-                employee.getRole(),
-                employee.getWeeklyHours(),
-                employee.getHourlyRate(),
-                employee.getHourlyRate() * employee.getWeeklyHours());
-        return this.employeeRepository.save(emp);
-    }
-
-    @Override
-    public Employee updateEmployee(Long id, String name, String surname, String email, Role role, Integer weeklyHours,
-                                   Double hourlyRate, Double weeklySalary) {
-        Employee employee = this.employeeRepository.findById(id).orElseThrow(InvalidEmployeeIdException::new);
-
-        employee.setName(name);
-        employee.setSurname(surname);
-        employee.setEmail(email);
-        employee.setRole(role);
-        employee.setWeeklyHours(weeklyHours);
-        employee.setHourlyRate(hourlyRate);
-        employee.setWeeklySalary(hourlyRate * weeklyHours);
-
+//        Employee emp = new Employee(
+//                employee.getName(),
+//                employee.getSurname(),
+//                employee.getEmail(),
+//                employee.getRole(),
+//                employee.getWeeklyHours(),
+//                employee.getHourlyRate(),
+//                employee.getWeeklySalary());
         return this.employeeRepository.save(employee);
     }
 
+//    @Override
+//    public Employee updateEmployee(Long id, String name, String surname, String email, Role role, Integer weeklyHours,
+//                                   Integer hourlyRate, Integer weeklySalary) {
+//        Employee employee = this.employeeRepository.findById(id).orElseThrow(InvalidEmployeeIdException::new);
+//
+//        employee.setName(name);
+//        employee.setSurname(surname);
+//        employee.setEmail(email);
+//        employee.setRole(role);
+//        employee.setWeeklyHours(weeklyHours);
+//        employee.setHourlyRate(hourlyRate);
+//        employee.setWeeklySalary(hourlyRate * weeklyHours);
+//
+//        return this.employeeRepository.save(employee);
+//    }
+
     @Override
     public Employee updateEmployee(Long id, Employee employee) {
-        Employee emp = this.employeeRepository.findById(employee.getId()).orElseThrow(InvalidEmployeeIdException::new);
+        Employee emp = this.employeeRepository.findById(id).orElseThrow(InvalidEmployeeIdException::new);
 
         emp.setName(employee.getName());
         emp.setSurname(employee.getSurname());
@@ -77,7 +77,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         emp.setRole(employee.getRole());
         emp.setWeeklyHours(employee.getWeeklyHours());
         emp.setHourlyRate(employee.getHourlyRate());
-        emp.setWeeklySalary(employee.getHourlyRate() * employee.getWeeklyHours());
+//        emp.setWeeklySalary(employee.getHourlyRate() * employee.getWeeklyHours());
 
         return this.employeeRepository.save(emp);
     }

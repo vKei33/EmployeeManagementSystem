@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping("/api/employee")
 public class EmployeeController {
 
@@ -38,4 +39,10 @@ public class EmployeeController {
         return "Updated: " + employee.getName() + " " + employee.getSurname();
     }
 
+
+    @DeleteMapping("/{id}/delete")
+    public String deleteEmployee(@PathVariable Long id) {
+        this.employeeService.deleteEmployee(id);
+        return "Successfully deleted!";
+    }
 }
