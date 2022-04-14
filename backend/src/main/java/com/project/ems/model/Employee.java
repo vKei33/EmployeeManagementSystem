@@ -2,7 +2,6 @@ package com.project.ems.model;
 
 import lombok.Data;
 import org.hibernate.annotations.Formula;
-import org.springframework.data.jpa.repository.Query;
 
 import javax.persistence.*;
 
@@ -27,7 +26,7 @@ public class Employee {
 
     private Integer hourlyRate;
 
-    @Formula("weekly_hours*hourly_rate") // kako vo baza
+    @Formula("weekly_hours*hourly_rate")
     private Integer weeklySalary;
 
     public Employee() {
@@ -43,8 +42,4 @@ public class Employee {
         this.hourlyRate = hourlyRate;
         this.weeklySalary = weeklySalary;
     }
-
-//    public Integer getWeeklySalary() {
-//        return this.getWeeklyHours() * this.getHourlyRate();
-//    }
 }

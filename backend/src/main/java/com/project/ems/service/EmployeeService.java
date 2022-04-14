@@ -13,13 +13,7 @@ public interface EmployeeService {
 
     Employee insertEmployee(Employee employee);
 
-//    Employee insertEmployee(String name, String surname, String email, Role role, Integer weeklyHours,
-//                            Integer hourlyRate, Integer weeklySalary);
-
     Employee updateEmployee(Long id, Employee employee);
-
-//    Employee updateEmployee(Long id, String name, String surname, String email, Role role, Integer weeklyHours,
-//                            Integer hourlyRate, Integer weeklySalary);
 
     void deleteEmployee(Long id);
 
