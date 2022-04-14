@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Link, useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import Sidebar from "../Layout/Sidebar";
 
 const EmployeeEdit = () => {
@@ -40,7 +40,6 @@ const EmployeeEdit = () => {
         },
       })
       .then(() => {
-        alert("Successfully edited an employee");
         navigate("/");
       });
   };
@@ -52,22 +51,6 @@ const EmployeeEdit = () => {
         <main className="col-md-9 ms-sm-auto col-lg-10 px-md-4">
           <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
             <h1 className="h2">Edit Employee</h1>
-            <div className="btn-toolbar mb-2 mb-md-0">
-              <div className="me-2">
-                <button
-                  type="submit"
-                  className="btn btn-sm btn-outline-success"
-                >
-                  Add
-                </button>
-                <button
-                  type="button"
-                  className="btn btn-sm btn-outline-danger ms-2"
-                >
-                  <Link to={"/"}>Back</Link>
-                </button>
-              </div>
-            </div>
           </div>
 
           <form onSubmit={handleSubmit}>
@@ -79,6 +62,7 @@ const EmployeeEdit = () => {
                   id="employeeName"
                   placeholder="John"
                   autocomplete="off"
+                  required
                   value={employee.name}
                   onChange={(e) =>
                     setEmployee({ ...employee, name: e.target.value })
@@ -93,6 +77,7 @@ const EmployeeEdit = () => {
                   id="employeeSurname"
                   placeholder="Doe"
                   autocomplete="off"
+                  required
                   value={employee.surname}
                   onChange={(e) =>
                     setEmployee({ ...employee, surname: e.target.value })
@@ -107,6 +92,7 @@ const EmployeeEdit = () => {
                   id="employeeEmail"
                   placeholder="employee@mail.com"
                   autocomplete="off"
+                  required
                   value={employee.email}
                   onChange={(e) =>
                     setEmployee({ ...employee, email: e.target.value })
@@ -121,6 +107,7 @@ const EmployeeEdit = () => {
                   id="employeeRole"
                   placeholder="SOFTWARE_DEVELOPER"
                   autocomplete="off"
+                  required
                   value={employee.role}
                   onChange={(e) =>
                     setEmployee({ ...employee, role: e.target.value })
@@ -135,6 +122,7 @@ const EmployeeEdit = () => {
                   id="employeeWeeklyHours"
                   placeholder="4"
                   autocomplete="off"
+                  required
                   value={employee.weeklyHours}
                   onChange={(e) =>
                     setEmployee({ ...employee, weeklyHours: e.target.value })
@@ -149,6 +137,7 @@ const EmployeeEdit = () => {
                   id="employeeHourlyRate"
                   placeholder="4.5"
                   autocomplete="off"
+                  required
                   value={employee.hourlyRate}
                   onChange={(e) =>
                     setEmployee({ ...employee, hourlyRate: e.target.value })
@@ -157,9 +146,14 @@ const EmployeeEdit = () => {
                 <label htmlFor="employeeHourlyRate">Hourly Rate</label>
               </div>
             </div>
-            <button type="submit" className="btn btn-sm btn-outline-success">
-              Add
-            </button>
+            <div className="d-flex gap-2">
+              <button type="submit" className="btn btn-lg btn-outline-success">
+                Confirm
+              </button>
+              <Link to={"/"} className="btn btn-lg btn-outline-danger">
+                Back
+              </Link>
+            </div>
           </form>
         </main>
       </div>

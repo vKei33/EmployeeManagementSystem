@@ -23,7 +23,6 @@ const EmployeeList = () => {
     axios
       .delete(`http://localhost:8080/api/employee/${id}/delete`)
       .then((res) => {
-        alert("Successfully Deleted! ", res);
         window.location.reload();
       })
       .catch((err) => console.log(err));
@@ -38,16 +37,16 @@ const EmployeeList = () => {
             <h1 className="h2">Employees</h1>
             <div className="btn-toolbar mb-2 mb-md-0">
               <div className="btn-group me-2">
-                <a type="button" className="btn btn-sm btn-outline-primary">
-                  <Link to={"/employee/add"}>Add Employee</Link>
-                </a>
+                <Link to={"/employee/add"} className="btn btn btn-primary">
+                  Add Employee
+                </Link>
               </div>
             </div>
           </div>
 
           <div className="table-responsive">
-            <table className="table table-striped table-sm align-middle">
-              <thead>
+            <table className="table table-sm table-bordered align-middle">
+              <thead className="table-light text-center">
                 <tr>
                   <th scope="col">Full Name</th>
                   <th scope="col">Email</th>
@@ -55,9 +54,7 @@ const EmployeeList = () => {
                   <th scope="col">Weekly Hours</th>
                   <th scope="col">Hourly Rate</th>
                   <th scope="col">Weekly Salary</th>
-                  <th scope="col" className="text-center">
-                    X
-                  </th>
+                  <th scope="col">X</th>
                 </tr>
               </thead>
               <tbody>
@@ -76,16 +73,10 @@ const EmployeeList = () => {
                     <td className="text-center">
                       <button
                         onClick={(event) => handleDelete(employee.id, event)}
-                        className="btn btn-danger"
+                        className="btn btn-sm btn-danger"
                       >
                         <i class="bi bi-trash"></i>
                       </button>
-                      {/* <Link
-                        to={"/employee/" + employee.id + "/delete"}
-                        className="btn btn-danger"
-                      >
-                        <i class="bi bi-trash"></i>
-                      </Link> */}
                     </td>
                   </tr>
                 ))}

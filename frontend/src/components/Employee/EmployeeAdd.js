@@ -32,7 +32,6 @@ const EmployeeAdd = () => {
         },
       })
       .then(() => {
-        alert("Successfully added new employee");
         navigate("/");
       });
   };
@@ -43,23 +42,7 @@ const EmployeeAdd = () => {
         <Sidebar />
         <main className="col-md-9 ms-sm-auto col-lg-10 px-md-4">
           <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-            <h1 className="h2">Add Employee</h1>
-            <div className="btn-toolbar mb-2 mb-md-0">
-              <div className="me-2">
-                <button
-                  type="submit"
-                  className="btn btn-sm btn-outline-success"
-                >
-                  Add
-                </button>
-                <button
-                  type="button"
-                  className="btn btn-sm btn-outline-danger ms-2"
-                >
-                  <Link to={"/"}>Back</Link>
-                </button>
-              </div>
-            </div>
+            <h1 className="h2">New Employee</h1>
           </div>
 
           <form onSubmit={handleSubmit}>
@@ -71,6 +54,7 @@ const EmployeeAdd = () => {
                   id="employeeName"
                   placeholder="John"
                   autocomplete="off"
+                  required
                   onChange={(e) => setEmployeeName(e.target.value)}
                 />
                 <label htmlFor="employeeName">Name</label>
@@ -82,6 +66,7 @@ const EmployeeAdd = () => {
                   id="employeeSurname"
                   placeholder="Doe"
                   autocomplete="off"
+                  required
                   onChange={(e) => setEmployeeSurname(e.target.value)}
                 />
                 <label htmlFor="employeeSurname">Surname</label>
@@ -93,6 +78,7 @@ const EmployeeAdd = () => {
                   id="employeeEmail"
                   placeholder="employee@mail.com"
                   autocomplete="off"
+                  required
                   onChange={(e) => setEmployeeEmail(e.target.value)}
                 />
                 <label htmlFor="employeeEmail">Email</label>
@@ -104,6 +90,7 @@ const EmployeeAdd = () => {
                   id="employeeRole"
                   placeholder="SOFTWARE_DEVELOPER"
                   autocomplete="off"
+                  required
                   onChange={(e) => setEmployeeRole(e.target.value)}
                 />
                 <label htmlFor="employeeRole">Role</label>
@@ -115,6 +102,7 @@ const EmployeeAdd = () => {
                   id="employeeWeeklyHours"
                   placeholder="4"
                   autocomplete="off"
+                  required
                   onChange={(e) => setEmployeeWeeklyHours(e.target.value)}
                 />
                 <label htmlFor="employeeWeeklyHours">Weekly Hours</label>
@@ -126,14 +114,20 @@ const EmployeeAdd = () => {
                   id="employeeHourlyRate"
                   placeholder="4.5"
                   autocomplete="off"
+                  required
                   onChange={(e) => setEmployeeHourlyRate(e.target.value)}
                 />
                 <label htmlFor="employeeHourlyRate">Hourly Rate</label>
               </div>
             </div>
-            <button type="submit" className="btn btn-sm btn-outline-success">
-              Add
-            </button>
+            <div className="d-flex gap-2">
+              <button type="submit" className="btn btn-lg btn-outline-success">
+                Confirm
+              </button>
+              <Link to={"/"} className="btn btn-lg btn-outline-danger">
+                Back
+              </Link>
+            </div>
           </form>
         </main>
       </div>
